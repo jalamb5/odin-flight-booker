@@ -1,15 +1,4 @@
 class Airport < ApplicationRecord
-  def new
-    @airport = Airport.new
-  end
-
-  def create
-    @airport = Airport.new(airport_params)
-  end
-
-  private
-
-  def airport_params
-    params.require(:airport).permit(:city, :code)
-  end
+  has_many :departing_flights, class_name: 'Flight', foreign_key: 'departure_id'
+  has_many :arriving_flights, class_name: 'Flight', foreign_key: 'arrival_id'
 end
