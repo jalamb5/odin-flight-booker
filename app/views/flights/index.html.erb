@@ -1,10 +1,12 @@
-<h1>Flights#index</h1>
-<p>Find me in app/views/flights/index.html.erb</p>
+<h1>Flight Booker</h1>
 
 <% @flights.each do |flight| %>
-  <%= flight.departure_airport.code %>
-  <%= ' - > - ' %>
-  <%= flight.arrival_airport.code %>
-  <%= flight.departure_time.to_date %>
-  <br><br>
+  <div class= 'flight' >
+    <div class= 'code'><%= flight.departure_airport.code + ' - > - ' + flight.arrival_airport.code %></div>
+    <%= flight.departure_time.to_date %>
+    <%= flight.duration.to_s + 'hrs' %>
+    <br>
+      <%= flight.departure_airport.city + ' to ' + flight.arrival_airport.city %>
+    <br><br>
+  </div>
 <% end %>
