@@ -1,12 +1,16 @@
 <h1>Flight Booker</h1>
 
-<% @flights.each do |flight| %>
-  <div class= 'flight' >
-    <div class= 'code'><%= flight.departure_airport.code + ' - > - ' + flight.arrival_airport.code %></div>
-    <%= flight.departure_time.to_date %>
-    <%= flight.duration.to_s + 'hrs' %>
-    <br>
-      <%= flight.departure_airport.city + ' to ' + flight.arrival_airport.city %>
-    <br><br>
-  </div>
+<%= form_with model: @flight, method: :get do |f| %>
+  <%= f.select(:departure_id, @airport_options) %>
+  <%= f.select(:arrival_id, @airport_options) %>
+  <%= 'departure_date' %>
+  <%= f.select(:num_passengers, [1, 2, 3, 4]) %>
+  <%= f.submit 'Search' %>
+<% end %>
+
+<% @searched_flights.each do |flight| %>
+  <div class= 'code'><%= flight.departure_airport.code + ' - > - ' + flight.arrival_airport.code %><br></div>
+  <%= flight.departure_time.to_date %>
+  <%= ' - Flight time: ' + flight.duration.to_s + 'hrs' %>
+  <br><br>
 <% end %>
