@@ -9,8 +9,10 @@
 <% end %>
 
 <% @searched_flights.each do |flight| %>
-  <div class= 'code'><%= flight.departure_airport.code + ' - > - ' + flight.arrival_airport.code %><br></div>
-  <%= flight.departure_time.to_date %>
-  <%= ' - Flight time: ' + flight.duration.to_s + 'hrs' %>
-  <br><br>
+  <div class= 'flight' >
+    <div class= 'code'><%= flight.departure_airport.code + ' - > - ' + flight.arrival_airport.code %><br></div>
+    <%= flight.departure_time.to_date %>
+    <%= ' - Flight time: ' + flight.duration.to_s + 'hrs' %>
+    <br><br>
+  </div>
 <% end %>
