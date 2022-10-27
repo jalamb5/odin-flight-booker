@@ -8,11 +8,11 @@
   <%= f.submit 'Search' %>
 <% end %>
 
-<%= form_with model: @booking, method: :get do |f| %>
+<%= form_with model: @booking, url: new_booking_path, method: :get do |f| %>
   <% @searched_flights.each do |flight| %>
     <div class= 'flight' >
       <div class= 'code'>
-        <%= f.radio_button :id, flight.id %>
+        <%= f.radio_button :flight_id, flight.id %>
         <%= flight.departure_airport.code + ' - > - ' + flight.arrival_airport.code %>
       <br></div>
       <%= flight.departure_time.to_date %>
@@ -20,5 +20,6 @@
       <br><br>
     </div>
   <% end %><br><br>
+  <% hidden_field(:booking, :num_passengers, :value => @num_passengers)%>
   <%= f.submit 'Select Flight' %>
 <% end %>

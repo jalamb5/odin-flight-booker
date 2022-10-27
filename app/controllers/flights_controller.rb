@@ -3,7 +3,11 @@ class FlightsController < ApplicationController
 
   def index
     @flights = Flight.all
-    @searched_flights = Flight.where(departure_id: params[:departure_id], arrival_id: params[:arrival_id])
+    @searched_flights = Flight.where(
+      departure_id: params[:departure_id],
+      arrival_id: params[:arrival_id]
+    )
+    @num_passengers = params[:num_passengers]
   end
 
   def show; end
