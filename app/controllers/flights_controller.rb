@@ -1,5 +1,5 @@
 class FlightsController < ApplicationController
-  before_action :set_airport_options
+  before_action :set_airport_options, :set_date_options
 
   def index
     @flights = Flight.all
@@ -24,5 +24,9 @@ class FlightsController < ApplicationController
 
   def set_airport_options
     @airport_options = Airport.all.map { |a| [a.code, a.id] }
+  end
+
+  def set_date_options
+    @date_options = Flight.all.map { |f| [f.departure_time.strftime('%m/%d/%Y'), f.id] }
   end
 end
