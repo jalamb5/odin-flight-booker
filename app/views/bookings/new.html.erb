@@ -1,4 +1,14 @@
 <h1>Bookings#new</h1>
 <p>Find me in app/views/bookings/new.html.erb</p>
 
-<%= @num_passengers %>
+<%= form_with model: @booking do |f| %>
+  <% hidden_field(:booking, :flight_id, :value => params[:flight_id]) %>
+  <h3>Passenger Info</h3>
+  <%= f.fields_for :passengers do |p| %>
+    <%= p.label :name %>
+    <%= p.text_field :name %>
+    <%= p.label :email %>
+    <%= p.email_field :email %>
+  <% end %>
+  <%= f.submit 'Book Flight' %>
+<% end %>

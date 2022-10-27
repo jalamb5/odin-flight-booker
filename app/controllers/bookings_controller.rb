@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   def new
     @booking = Booking.new
+    # params[:num_passengers].times { @booking.passengers.build }
     @num_passengers = params[:num_passengers]
   end
 
@@ -19,6 +20,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:flight_id)
+    params.require(:booking).permit(:flight_id, :passenger_id, passengers_attributes: %i[id name email])
   end
 end
