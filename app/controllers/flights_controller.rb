@@ -8,6 +8,12 @@ class FlightsController < ApplicationController
       arrival_id: params[:arrival_id]
     )
     @num_passengers = params[:num_passengers]
+
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @flights }
+      format.json { render :json => @flights }
+    end
   end
 
   def show; end
