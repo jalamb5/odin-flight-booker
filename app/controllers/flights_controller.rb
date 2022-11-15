@@ -11,8 +11,8 @@ class FlightsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.xml { render :xml => @flights }
-      format.json { render :json => @flights }
+      format.xml { render xml: @flights }
+      format.json { render json: @flights }
     end
   end
 
