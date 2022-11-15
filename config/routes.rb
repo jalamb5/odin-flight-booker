@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :passengers
   get 'passengers/new'
   get 'passengers/create'
   get 'bookings/new'
